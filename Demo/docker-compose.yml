@@ -1,0 +1,61 @@
+version: "3"
+services:
+  frontend-application:
+      image: 9dd69dd4ae57
+      ports:
+        - "8081:8080"
+      restart: always
+      networks:
+        - front
+      depends_on:
+        - backend-application
+ 
+  backend-application:
+   image: 11609394786c
+   ports:
+      - "8011:8010"
+   networks:
+      - front
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - 2181:2181
+   
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:3.2
+    ports:
+      - 9092:9092
+  
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      
+    depends_on:
+      - zookeeper
+   
+
+  sockets:
+    image: 03556c7758e3
+    ports:
+      - 12345:12345
+   
+  producer:
+       
+    image: b2a03d445946
+    depends_on:
+      - kafka
+      
+  consumer:
+   
+    image: e1a7e5b3ed82
+    depends_on:
+      - kafka 
+  
+networks:
+  front:
+   driver: bridge
+   
+   
+ 

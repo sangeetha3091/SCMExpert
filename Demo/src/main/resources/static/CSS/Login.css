@@ -1,0 +1,167 @@
+@charset "UTF-8";
+body {
+ background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.5)
+        ),
+        /* bottom, image */
+        url('../shipping.jpg');
+    }
+	 
+
+.container {
+	display: flex;
+	width: 1140px;
+	height: 180px;
+}
+
+.button {
+	flex: 1;
+	height: 100%;
+}
+
+.form-control {
+	min-height: 41px;
+	box-shadow: none;
+	border-color: #e1e1e1;
+	
+}
+
+.form-control:focus {
+	border-color: #00cb82;
+}
+
+.form-control, .btn {
+	border-radius: 3px;
+}
+
+.form-header {
+	margin: -30px -30px 20px;
+	padding: 30px 30px 10px;
+	text-align: center;
+	background: #00cb82;
+	border-bottom: 1px solid #eee;
+	color: #fff;
+}
+
+.form-header h2 {
+	font-size: 34px;
+	font-weight: bold;
+	margin: 0 0 10px;
+	font-family: 'Pacifico', sans-serif;
+}
+
+.form-header p {
+	margin: 20px 0 15px;
+	font-size: 17px;
+	line-height: normal;
+	font-family: 'Courgette', sans-serif;
+}
+
+.signup-form {
+	width: 390px;
+	margin: 0 auto;
+	padding: 30px 0;
+	border-radius: 10px;
+}
+
+.signup-form form {
+  background: black;
+  opacity: 0.9;
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #ffffff;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.9);
+	padding: 30px;
+	
+}
+
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+
+.signup-form label {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.signup-form input[type="checkbox"] {
+	position: relative;
+	top: 1px;
+}
+
+.signup-form .btn {
+	font-size: 16px;
+	font-weight: bold;
+	background: #00cb82;
+	border: none;
+	min-width: 200px;
+}
+
+.signup-form .btn:hover, .signup-form .btn:focus {
+	background: #00b073 !important;
+	outline: none;
+}
+
+.signup-form a {
+	color: #00cb82;
+}
+
+.signup-form a:hover {
+	text-decoration: underline;
+}
+
+button#reload-button {
+	padding: 10px 10px;
+	background-color: #001F3D;
+	font-size: 17px;
+	border: none;
+	border-radius: 5px;
+	color: #bcf5e7;
+	margin-right: 10px;
+}
+    
+#mainCaptcha{
+  position: relative;
+    max-width: 350px;
+  margin: auto;
+  margin: 20px;
+  padding: 10px;
+    user-select: none;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,139,253,0.25);
+  
+}
+
+#refresh{
+  position:relative;
+  left:270px;
+  width:30px;
+  height:50px;
+  bottom:60px;
+  background-color: transparent;
+  outline: none;
+  background-image: url('https://img.icons8.com/android/24/000000/refresh.png');
+  border : 0;
+  background-repeat: no-repeat;
+}
+
+#txtInput, #Button1{
+  position: relative;
+  left:5px;
+  padding: 10px 10px;
+  bottom: 40px;
+  font-size: 18px;
+}
+ 
+#Button1{
+ 
+ 	background: #00cb82;
+  border-color: transparent;
+  color: #fff;
+  border-radius: 5px;
+   
+}

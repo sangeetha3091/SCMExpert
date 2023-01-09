@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sf="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Courgette|Pacifico:400,700">
+<title>Sign up Form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+     
+  </head>
+  <link rel="stylesheet" href="../CSS/shipment.css">
+  <body>
+   
+  
+    <div class="testbox">
+     
+        <form method="post" th:object="${shipment}"  th:action="@{shipment}">
+         <div id="error" th:text="${error}" class="mb-4"></div>
+        <div class="banner">
+          <h1>Create Shipment</h1>
+        </div>
+        		 
+                
+  		<div th:if="${param.success}">
+
+                    <div class="alert alert-info">Successfully created</div>
+
+                </div>
+
+              <div class="item">
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+   
+    <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+</div>
+</div>
+        
+        <div class="item">
+          <p>Shipment/Invoice number</p>
+          <input type="number" name="shipmentNo" th:field="*{shipmentNo}"/>
+        </div>
+        <div class="item">
+          <p>Container Number</p>
+          <input type="number" name="containerNo" th:field="*{containerNo}"/>
+        </div>
+         <div class="item">
+          <p>Shipment Description</p>
+          <textarea name="description" th:field="*{description}" style="overflow:auto;resize:none" rows="4" cols="20" ></textarea>
+        </div>
+         <div class="item">
+          <p>Route Details</p>
+          <select th:field="*{route_details}">
+            <option value=""></option>
+           
+             <option value="Asia-US">Asia-US</option>
+            <option value="Asia - Europe">Asia - Europe</option>
+            <option value="Europe - UK"> Europe - UK</option>
+            <option value="North America-Canada"> North America-Canada</option>
+            <option value="Intra-Asia"> Intra-Asia</option>
+          </select>
+        </div>
+         <div class="item">
+          <p>Goods Type</p>
+          <select th:field="*{goods_type}">
+          <option value=""></option>
+              <option value="Metals">Metals</option>
+            <option value="Oil">Petrol and diesel</option>
+            <option value="Electronics">Electronics</option>
+          </select>
+        </div>
+         <div class="item">
+          <p>Device</p>
+          <select th:field="*{device}">
+            <option value=""></option>
+             
+            <option value="1156053076">1156053076</option>
+            <option value="1156053077">1156053077</option>
+            <option value="1156053078">1156053078</option>
+            <option value="1156053079">1156053079</option>
+          </select>
+        </div>
+        <div class="item">
+          <p>Expected Date of Delivery</p>
+          <input type="date" name="bdate" th:field="*{ex_date_of_delivery}" />
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+         <div class="item">
+          <p>PO Number</p>
+          <input type="number" name="name" th:field="*{po_number}"/>
+        </div>
+         <div class="item">
+          <p>Delivery Number</p>
+          <input type="number" name="name" th:field="*{del_number}"/>
+        </div>
+         <div class="item">
+          <p>NDC Number</p>
+          <input type="number" name="name" th:field="*{ndc_number}"/>
+        </div>
+         <div class="item">
+          <p>Batch Id</p>
+          <input type="number" name="name" th:field="*{batch_id}"/>
+        </div>
+       <div class="item">
+          <p>Serial number of Goods</p>
+          <input type="number" name="name" th:field="*{serial_no_of_goods}"/>
+        </div>
+ 
+       <div class="container">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-danger form-control  btn-block">Cancel Shipment</button></div>
+      <div class="col">
+        <button id="btnSubmit" class="btn btn-success form-control  btn-block" type="submit">Create Shipment</button></div>
+    </div>
+  </div>
+       
+   
+   
+       
+		
+         
+       
+        
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

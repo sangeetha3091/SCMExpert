@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Device Data Stream</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+<style>
+body {
+  font-family: "Trirong", serif;
+}
+</style>
+<script>
+setInterval(function() { window.location.reload();}, 15000);
+</script>
+</head>
+<body>
+<!-- <body style="  font-family: Georgia, serif; background-image: url('https://images.unsplash.com/photo-1606964212858-c215029db704?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'); background-repeat:no-repeat;  background-size: 1350px 1200px" > -->
+<div class="bg">
+<h3 style="font-size:200%;font-family: Georgia, serif; 	background: #00cb82;
+  border-color: transparent;
+  color: #fff;
+  border-radius-top: 5px;text-align:center">Device Data Stream</h3>
+  </div>
+   
+      
+      
+    
+   
+   <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    
+                    <th>Battery Level</th>
+                    <th>Device Id</th>
+                    <th>First Sensor Temperature</th>
+                    <th>Route From</th>
+                    <th>Route To</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${listEmp}">
+                    <td th:text="${employee.battery_Level}"></td>
+                    <td th:text="${employee.device_Id}"></td>
+                    <td th:text="${employee.first_Sensor_temperature}"></td>
+                    <td th:text="${employee.route_From}"></td>
+                    <td th:text="${employee.route_To}"></td>
+                 
+                     
+                   
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+   
+
+
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+
+</body>
+</html>

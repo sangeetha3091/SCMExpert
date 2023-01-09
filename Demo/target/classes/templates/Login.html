@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto|Courgette|Pacifico:400,700">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+	rel="stylesheet" />
+<title>Sign In Form</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+ <link rel="stylesheet" href="../CSS/Login.css">
+<body>
+
+	<div class="signup-form">
+	
+		    <form method="post" th:object="${user}"  th:action="@{login}">
+			 
+			 <div th:if="${param.error}">
+
+                    <div class="alert alert-info">Invalid Email or password</div>
+
+                </div>
+                 <div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+   
+    <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+</div>
+			<div class="form-group">
+				<label>Email</label> <input type="text" class="form-control"
+					name="email" required="required"  th:field="*{email}">
+			</div>
+
+			<div class="form-group">
+				<label>Password</label> <input type="password" class="form-control"
+					name="password" required="required" th:field="*{password}">
+			</div>
+			
+
+		<div class="form-group">
+				 <body onload="Captcha();"> 
+   <div class="capt"> 
+   <h2 type="text" id="mainCaptcha"></h2>
+   <p><input id="refresh" onclick="Captcha();"/></p>            
+   <input type="text" id="txtInput"/> 
+      
+   <input id="Button1" type="button" value="Verify" onclick="alert(ValidateCaptcha());"/>
+   </div>
+   <input type="submit" id="log"
+				class="btn btn-primary btn-block btn-lg" value="Login" />
+				 
+				 
+				<div style="margin-top: 1em;" class="text-center small">New User? <a href="#"th:href="@{register}">Register here</a></div>
+</body>
+			</div>
+			
+</form>
+
+	</div>
+
+	<!-- Modal HTML -->
+
+	<div id="myModal" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="icon-box">
+						<i class="material-icons">&#xE876;</i>
+					</div>
+					<h4 class="modal-title w-100">Awesome!</h4>
+				</div>
+				<div class="modal-body">
+					<p class="text-center">Login Successfully.</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+  function Captcha(){
+	    var btnSubmit = document.getElementById("log");
+	    btnSubmit.disabled = true;
+     var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z', 
+     '0','1','2','3','4','5','6','7','8','9');
+     var i;
+     for (i=0;i<6;i++){
+         var a = alpha[Math.floor(Math.random() * alpha.length)];
+         var b = alpha[Math.floor(Math.random() * alpha.length)];
+         var c = alpha[Math.floor(Math.random() * alpha.length)];
+         var d = alpha[Math.floor(Math.random() * alpha.length)];
+         var e = alpha[Math.floor(Math.random() * alpha.length)];
+         var f = alpha[Math.floor(Math.random() * alpha.length)];
+         var g = alpha[Math.floor(Math.random() * alpha.length)];
+                      }
+         var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
+         document.getElementById("mainCaptcha").innerHTML = code
+     document.getElementById("mainCaptcha").value = code
+       }
+function ValidateCaptcha(){
+     var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
+     var string2 = removeSpaces(document.getElementById('txtInput').value);
+     var btnSubmit = document.getElementById("log");
+	 btnSubmit.disabled = true;
+     if (string1 == string2){
+    	 btnSubmit.disabled = false;
+            return true;
+     }
+}
+function removeSpaces(string){
+     return string.split(' ').join('');
+}
+</script>
+</body>
+
+</html>
